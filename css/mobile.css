@@ -40,3 +40,21 @@ body {
   background-size: 13vw 15.5vw;
   background-position: 0 -9.7vw, 0 0;
   filter: drop-shadow(0 0 0.5vw #aaa); }
+
+.menu {
+  min-width: 60vw;
+  font-size: 4vw; }
+  .menu .submit {
+    margin: 2vw; }
+  .menu .list-wrapper {
+    margin: 0 7.1vw 0 0; }
+    .menu .list-wrapper ul {
+      max-height: 31vh;
+      margin: 0 -7.1vw 0 0; }
+      .menu .list-wrapper ul li {
+        padding: 2vw 1vw 2vw 2vw; }
+        .menu .list-wrapper ul li img {
+          width: 3.3vw; }
+        .menu .list-wrapper ul li span {
+          margin-right: 5.3vw;
+          margin-left: 2.6vw; }

@@ -14,6 +14,7 @@ refreshSelected = (type, value) ->
   $.each menus[type].elements, (i, e) -> e.klass = ''
   menus[type].elements[value].klass = 'selected'
   switchMenu(type)
+  $('.menu ul').scrollTop($('li.selected').position().top - 100);
 
 updateRecipe = (type, value) ->
   menus['recipe'].elements[type].klass = 'selected'

@@ -27,7 +27,8 @@
       return e.klass = '';
     });
     menus[type].elements[value].klass = 'selected';
-    return switchMenu(type);
+    switchMenu(type);
+    return $('.menu ul').scrollTop($('li.selected').position().top - 100);
   };
 
   updateRecipe = function(type, value) {
