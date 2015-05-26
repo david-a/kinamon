@@ -1,0 +1,54 @@
+@import 'variables'
+
+body
+  background-size: 60px 60px
+  background-position: 0 0, 30px 30px
+
+.header
+  background-image: repeating-linear-gradient(90deg, transparent, transparent 6vw, $color_saddle_50 6vw, $color_saddle_50 12vw)
+  height: 38vw
+  .title-wrapper
+    padding-top: 4vw
+    .by-line
+      float: none
+      margin: -5vw 0 0
+      img
+        width: 42vw
+        position: relative
+        z-index: 1
+
+
+    .title
+      float: none
+      margin: -5vw 0 0
+      img
+        width: 40vw
+
+
+    .slogan
+      float: none
+      margin: -5vw 0 0
+      img
+        width: 61vw
+
+
+    img
+      margin: 0 auto
+      display: block
+
+
+
+.manjet
+  .manjet-dotted-stripe
+    height: 8vw
+    background-color: $color_orient
+    background-image: radial-gradient($color_mabel 35%, transparent 39%)
+    background-size: 8vw 8vw
+    background-position: 0 0, 0 0
+
+  .manjet-frills
+    height: 6vw
+    background-image: radial-gradient($color_mabel 69%, transparent 67%)
+    background-size: 13vw 15.5vw
+    background-position: 0 -9.7vw, 0 0
+    filter: drop-shadow(0 0 0.5vw $color_silver_chalice)

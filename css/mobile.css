@@ -1,0 +1,42 @@
+body {
+  background-size: 60px 60px;
+  background-position: 0 0, 30px 30px; }
+
+.header {
+  background-image: repeating-linear-gradient(90deg, transparent, transparent 6vw, rgba(82, 56, 40, 0.5) 6vw, rgba(82, 56, 40, 0.5) 12vw);
+  height: 38vw; }
+  .header .title-wrapper {
+    padding-top: 4vw; }
+    .header .title-wrapper .by-line {
+      float: none;
+      margin: -5vw 0 0; }
+      .header .title-wrapper .by-line img {
+        width: 42vw;
+        position: relative;
+        z-index: 1; }
+    .header .title-wrapper .title {
+      float: none;
+      margin: -5vw 0 0; }
+      .header .title-wrapper .title img {
+        width: 40vw; }
+    .header .title-wrapper .slogan {
+      float: none;
+      margin: -5vw 0 0; }
+      .header .title-wrapper .slogan img {
+        width: 61vw; }
+    .header .title-wrapper img {
+      margin: 0 auto;
+      display: block; }
+
+.manjet .manjet-dotted-stripe {
+  height: 8vw;
+  background-color: #006680;
+  background-image: radial-gradient(#d5f6ff 35%, transparent 39%);
+  background-size: 8vw 8vw;
+  background-position: 0 0, 0 0; }
+.manjet .manjet-frills {
+  height: 6vw;
+  background-image: radial-gradient(#d5f6ff 69%, transparent 67%);
+  background-size: 13vw 15.5vw;
+  background-position: 0 -9.7vw, 0 0;
+  filter: drop-shadow(0 0 0.5vw #aaa); }
