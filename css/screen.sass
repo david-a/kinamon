@@ -50,9 +50,8 @@ body
 
 
     img
-      filter: drop-shadow(0px 0 2px $color_woodsmoke)
-
-
+      filter: drop-shadow(2px 0 2px $color_woodsmoke)
+      -webkit-filter: drop-shadow(2px 0 2px $color_woodsmoke)
 
 .manjet
   .manjet-dotted-stripe
@@ -68,11 +67,15 @@ body
     background-size: 5.1vw 5.7vw
     background-position: 0 -3.1vw, 0 0
     filter: drop-shadow(0px 0 2px $color_silver_chalice)
+    -webkit-filter: drop-shadow(0px 0 2px $color_silver_chalice)
 
+.cake-wrapper
+  margin: 0 auto
+  width: 50vw
 
 .menu
   background-color: $color_wild_sand
-  min-width: 36vw
+  min-width: 32vw
   float: right
   font-size: 2vw
   //If you use compass, instead of the line below you could use +box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)

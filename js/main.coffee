@@ -20,6 +20,9 @@ updateRecipe = (type, value) ->
   menus['recipe'].elements[type].klass = 'selected'
   menus['recipe'].elements[type].name = menus[type].elements[value].name
 
+updateCake = (type, value) ->
+  $("#cake ##{type}").html(menus[type].elements[value].svg)
+
 $('.menu').on 'click', 'li', (event) ->
   $('.menu').trigger 'item:click', [$(@).closest('.menu-wrapper').data('type'), $(@).data('value')]
 
@@ -32,6 +35,7 @@ $('.menu').on 'item:click', (event, type, value) ->
   else
     refreshSelected(type, value)
     updateRecipe(type, value)
+    updateCake(type, value)
     # Replace cake part
     # Update form?
 

@@ -1,5 +1,5 @@
 (function() {
-  var refreshSelected, switchMenu, updateRecipe;
+  var refreshSelected, switchMenu, updateCake, updateRecipe;
 
   switchMenu = function(type, animate) {
     var menuHtml, tempDiv;
@@ -36,6 +36,10 @@
     return menus['recipe'].elements[type].name = menus[type].elements[value].name;
   };
 
+  updateCake = function(type, value) {
+    return $("#cake #" + type).html(menus[type].elements[value].svg);
+  };
+
   $('.menu').on('click', 'li', function(event) {
     return $('.menu').trigger('item:click', [$(this).closest('.menu-wrapper').data('type'), $(this).data('value')]);
   });
@@ -49,7 +53,8 @@
       return switchMenu(value, true);
     } else {
       refreshSelected(type, value);
-      return updateRecipe(type, value);
+      updateRecipe(type, value);
+      return updateCake(type, value);
     }
   });
 
