@@ -3,6 +3,7 @@ body {
   background-position: 0 0, 30px 30px; }
 
 .header {
+  background-image: -webkit-repeating-linear-gradient(0deg, transparent, transparent 6vw, rgba(82, 56, 40, 0.5) 6vw, rgba(82, 56, 40, 0.5) 12vw);
   background-image: repeating-linear-gradient(90deg, transparent, transparent 6vw, rgba(82, 56, 40, 0.5) 6vw, rgba(82, 56, 40, 0.5) 12vw);
   height: 38vw; }
   .header .title-wrapper {
@@ -31,15 +32,18 @@ body {
 .manjet .manjet-dotted-stripe {
   height: 8vw;
   background-color: #006680;
+  background-image: -webkit-radial-gradient(#d5f6ff 35%, transparent 39%);
   background-image: radial-gradient(#d5f6ff 35%, transparent 39%);
   background-size: 8vw 8vw;
   background-position: 0 0, 0 0; }
 .manjet .manjet-frills {
   height: 6vw;
+  background-image: -webkit-radial-gradient(#d5f6ff 69%, transparent 67%);
   background-image: radial-gradient(#d5f6ff 69%, transparent 67%);
   background-size: 13vw 15.5vw;
   background-position: 0 -9.7vw, 0 0;
-  filter: drop-shadow(0 0 0.5vw #aaa); }
+  -webkit-filter: drop-shadow(0 0 0.5vw #aaa);
+          filter: drop-shadow(0 0 0.5vw #aaa); }
 
 .menu {
   min-width: 60vw;

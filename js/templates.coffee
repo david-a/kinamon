@@ -2,7 +2,7 @@
   menu: (data) ->
     lines = $.map data.elements, (element, type) ->
       "<li class='line #{element.klass || ''}' data-value='#{type}'>" +
-      "<img src='images/check.png'>" +
+      "<img src='public/images/check.png'>" +
       "<span class='prefix'>#{element.prefix || ''}</span>" +
       "#{element.name || ''}" +
       "</li>"
