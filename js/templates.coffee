@@ -7,8 +7,10 @@
       "#{element.name || ''}" +
       "</li>"
     "<div class='menu-wrapper' data-type='#{data.type}'>" +
+    "<div class='menu-title-wrapper'>" +
     "<a class='submit'>#{data.button || 'בחר'}</a>" +
     "<h2 class='heading'>#{data.name}</h2>" +
+    "</div>" +
     "<div class='list-wrapper'>" +
     "<ul>" +
     lines.join('') +

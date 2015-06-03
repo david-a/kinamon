@@ -75,8 +75,8 @@ body {
       -ms-transform: rotate(2deg);
           transform: rotate(2deg);
   position: fixed;
-  bottom: -10px;
-  padding-bottom: 10px; }
+  bottom: -0.7vw;
+  padding-bottom: 0.7vw; }
   .menu .heading {
     color: #3f2210;
     margin: 0; }

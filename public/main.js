@@ -1,5 +1,41 @@
 (function() {
-  var refreshSelected, switchMenu, updateCake, updateRecipe;
+  var clickedOnAppBody, hideMenu, menu, minimizeMenu, refreshSelected, restoreMenu, storeMenuHeaight, switchMenu, updateCake, updateRecipe;
+
+  menu = $('.menu');
+
+  storeMenuHeaight = function() {
+    if (!menu.data('height')) {
+      return menu.data('height', menu.height());
+    }
+  };
+
+  hideMenu = function() {
+    storeMenuHeaight();
+    return menu.animate({
+      height: 0,
+      opacity: 0
+    });
+  };
+
+  minimizeMenu = function() {
+    storeMenuHeaight();
+    return menu.animate({
+      height: $('.menu-title-wrapper').height()
+    });
+  };
+
+  restoreMenu = function() {
+    return menu.animate({
+      height: menu.data('height'),
+      opacity: 1
+    }, {
+      complete: menu.removeData('height')
+    });
+  };
+
+  clickedOnAppBody = function(element) {
+    return $(element).is('body') || $(element).parents('.cake-wrapper').length;
+  };
 
   switchMenu = function(type, animate) {
     var menuHtml, tempDiv;
@@ -8,10 +44,10 @@
     }
     menuHtml = templates.menu(menus[type]);
     if (!animate) {
-      return $('.menu').html(menuHtml);
+      return menu.html(menuHtml);
     }
     tempDiv = $(templates.hiddenDiv(menuHtml)).appendTo('body');
-    return $('.menu').animate({
+    return menu.animate({
       height: tempDiv.height(),
       width: tempDiv.width()
     }, 200, function() {
@@ -40,15 +76,15 @@
     return $("#cake #" + type).html(menus[type].elements[value].svg);
   };
 
-  $('.menu').on('click', 'li', function(event) {
-    return $('.menu').trigger('item:click', [$(this).closest('.menu-wrapper').data('type'), $(this).data('value')]);
+  menu.on('click', 'li', function(event) {
+    return menu.trigger('item:click', [$(this).closest('.menu-wrapper').data('type'), $(this).data('value')]);
   });
 
-  $('.menu').on('click', 'a.submit', function(event) {
-    return $('.menu').trigger('menu:submit', [$(this).closest('.menu-wrapper').data('type')]);
+  menu.on('click', 'a.submit', function(event) {
+    return menu.trigger('menu:submit', [$(this).closest('.menu-wrapper').data('type')]);
   });
 
-  $('.menu').on('item:click', function(event, type, value) {
+  menu.on('item:click', function(event, type, value) {
     if (type === 'recipe') {
       return switchMenu(value, true);
     } else {
@@ -58,12 +94,22 @@
     }
   });
 
-  $('.menu').on('menu:submit', function(event, type) {
+  menu.on('menu:submit', function(event, type) {
     if (type === 'recipe') {
 
     } else {
       return switchMenu('recipe', true);
     }
+  });
+
+  $('body').on('click', function(event) {
+    if (clickedOnAppBody(event.target)) {
+      return minimizeMenu();
+    }
+  });
+
+  $('body').on('click', '.menu-title-wrapper', function() {
+    return restoreMenu();
   });
 
   switchMenu('recipe');
