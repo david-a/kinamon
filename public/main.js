@@ -1,5 +1,5 @@
 (function() {
-  var clickedOnAppBody, hideMenu, menu, minimizeMenu, refreshSelected, restoreMenu, storeMenuHeaight, switchMenu, updateCake, updateRecipe;
+  var clickedOnAppBody, hideForm, hideMenu, menu, minimizeMenu, refreshSelected, restoreMenu, showForm, storeMenuHeaight, switchMenu, updateCake, updateRecipe;
 
   menu = $('.menu');
 
@@ -31,6 +31,14 @@
     }, {
       complete: menu.removeData('height')
     });
+  };
+
+  showForm = function() {
+    return $('.overlay').addClass('enabled');
+  };
+
+  hideForm = function() {
+    return $('.overlay').removeClass('enabled');
   };
 
   clickedOnAppBody = function(element) {
@@ -96,10 +104,14 @@
 
   menu.on('menu:submit', function(event, type) {
     if (type === 'recipe') {
-
+      return showForm();
     } else {
       return switchMenu('recipe', true);
     }
+  });
+
+  $('.back-to-recipe').on('click', function() {
+    return hideForm();
   });
 
   $('body').on('click', function(event) {

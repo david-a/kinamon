@@ -23,7 +23,6 @@
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
             <![endif]-->
-
             <div class='header'>
               <div class='title-wrapper'>
                 <div class='by-line'>
@@ -62,7 +61,7 @@
                     </g>
                     <g id="cake" transform="translate(148.000000, 0.000000)" sketch:type="MSShapeGroup">
                       <g id="base" transform="translate(15.000000, 145.000000)">
-                        <g id="base-mock" fill-opacity="0.5">
+                        <g id="base-mock" fill-opacity="0.3">
                           <path d="M730.831874,362.22602 L0.207837347,270.270012 L0.207837347,223.87595 L730.831874,315.831958 L730.831874,362.22602 Z" id="base" fill="#535353"></path>
                           <path d="M2.04281037e-14,224.527716 C2.04281037e-14,224.527716 7.48979278,151.451112 75.0452661,81.6898888 C142.600739,11.928666 227.348451,-1.77635684e-15 227.348451,-1.77635684e-15 L730.604187,315.703247 C486.572345,285.249366 2.04281037e-14,224.527716 2.04281037e-14,224.527716 Z" id="base-top" fill="#000000"></path>
                         </g>
@@ -91,7 +90,23 @@
               </svg>
             </div>
             <div class='menu'></div>
-
+            <div class='overlay'>
+              <div class='form-wrapper'>
+                <div class='form-title'>
+                  <h2>השאירו לנו פרטים ונחזור אליכם עוד היום!</h2>
+                </div>
+                <form>
+                  <input id='username' type='text' name='username' placeholder="שם"><br>
+                  <input id='phone' type='text' name='tel' placeholder="טלפון"><br>
+                  <input id='due-date' type='text' name='due-date' placeholder="למתי?"><br>
+                  <input id='notes' type='text' name='notes' placeholder="הערות"><br>
+                  <input id='form-submit' type='submit' value='שלח עוגתך'>
+                  <p>
+                    או <span class='back-to-recipe'>חזור למתכון</span>
+                  </p>
+                </form>
+              </div>
+            </div>
             <script>window.jQuery || document.write('<script src="public/vendor/jquery-1.11.3.min.js"><\/script>')</script>
             <script src="public/plugins.js"></script>
             <script src="public/templates.js"></script>

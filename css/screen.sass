@@ -145,3 +145,50 @@ body
   &.invisible
     .list-wrapper ul
       overflow-y: hidden
+
+.overlay
+  position: fixed
+  top: 0
+  left: 0
+  z-index: 100
+  opacity: 0
+  transition: opacity 500ms
+
+  &.enabled
+    width: 100%
+    height: 100%
+    background-color: $color_orient
+    opacity: 0.95
+    transition: opacity 500ms
+
+  .form-wrapper
+    margin: auto
+    width: 35%
+
+    .form-title
+      margin: 4vh 0
+      max-width: 100%
+
+      h2
+        font-size: 3vh
+        color: white
+
+    form
+      input
+        width: 100%
+        padding: 3vh
+        margin-bottom: 4vh
+        font-size: 3vh
+
+        &#form-submit
+          max-width: 50%
+
+      p
+        display: inline-block
+        margin-right: 1vw
+
+        .back-to-recipe
+          color: white
+
+          &:hover
+            cursor: pointer

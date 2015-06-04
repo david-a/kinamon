@@ -21,6 +21,12 @@ restoreMenu = ->
   ,
     complete: menu.removeData('height')
 
+showForm = ->
+  $('.overlay').addClass('enabled')
+
+hideForm = ->
+  $('.overlay').removeClass('enabled')
+
 clickedOnAppBody = (element) ->
   $(element).is('body') || $(element).parents('.cake-wrapper').length
 
@@ -64,9 +70,11 @@ menu.on 'item:click', (event, type, value) ->
 
 menu.on 'menu:submit', (event, type) ->
   if type == 'recipe'
-    # Open popup
+    showForm()
   else
     switchMenu('recipe', true)
+
+$('.back-to-recipe').on 'click', -> hideForm()
 
 $('body').on 'click', (event) ->
   minimizeMenu() if clickedOnAppBody(event.target)

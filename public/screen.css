@@ -122,3 +122,42 @@ body {
     visibility: visible; }
   .menu.invisible .list-wrapper ul {
     overflow-y: hidden; }
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  opacity: 0;
+  -webkit-transition: opacity 500ms;
+          transition: opacity 500ms; }
+  .overlay.enabled {
+    width: 100%;
+    height: 100%;
+    background-color: #006680;
+    opacity: 0.95;
+    -webkit-transition: opacity 500ms;
+            transition: opacity 500ms; }
+  .overlay .form-wrapper {
+    margin: auto;
+    width: 35%; }
+    .overlay .form-wrapper .form-title {
+      margin: 4vh 0;
+      max-width: 100%; }
+      .overlay .form-wrapper .form-title h2 {
+        font-size: 3vh;
+        color: white; }
+    .overlay .form-wrapper form input {
+      width: 100%;
+      padding: 3vh;
+      margin-bottom: 4vh;
+      font-size: 3vh; }
+      .overlay .form-wrapper form input#form-submit {
+        max-width: 50%; }
+    .overlay .form-wrapper form p {
+      display: inline-block;
+      margin-right: 1vw; }
+      .overlay .form-wrapper form p .back-to-recipe {
+        color: white; }
+        .overlay .form-wrapper form p .back-to-recipe:hover {
+          cursor: pointer; }
