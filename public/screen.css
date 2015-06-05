@@ -112,6 +112,8 @@ body {
           margin-left: 0.6vw; }
           .menu .list-wrapper ul li span:empty {
             margin-left: 0; }
+          .menu .list-wrapper ul li span.error {
+            color: red; }
         .menu .list-wrapper ul li img {
           visibility: hidden;
           width: 1.3vw; }
@@ -141,23 +143,35 @@ body {
   .overlay .form-wrapper {
     margin: auto;
     width: 35%; }
-    .overlay .form-wrapper .form-title {
+    .overlay .form-wrapper .form-title-wrapper {
       margin: 4vh 0;
-      max-width: 100%; }
-      .overlay .form-wrapper .form-title h2 {
+      max-width: 100%;
+      color: white; }
+      .overlay .form-wrapper .form-title-wrapper h2.form-title {
         font-size: 3vh;
-        color: white; }
+        margin: 0; }
+      .overlay .form-wrapper .form-title-wrapper h3.form-total-line {
+        font-size: 2vh;
+        margin: 1vh 0; }
+        .overlay .form-wrapper .form-title-wrapper h3.form-total-line span {
+          font-family: arial; }
     .overlay .form-wrapper form input {
       width: 100%;
       padding: 3vh;
       margin-bottom: 4vh;
-      font-size: 3vh; }
+      font-size: 1vw;
+      box-sizing: border-box; }
       .overlay .form-wrapper form input#form-submit {
         max-width: 50%; }
-    .overlay .form-wrapper form p {
-      display: inline-block;
-      margin-right: 1vw; }
-      .overlay .form-wrapper form p .back-to-recipe {
-        color: white; }
-        .overlay .form-wrapper form p .back-to-recipe:hover {
-          cursor: pointer; }
+      .overlay .form-wrapper form input.error {
+        border: 1px solid red; }
+    .overlay .form-wrapper form .form-buttons {
+      white-space: nowrap; }
+      .overlay .form-wrapper form .form-buttons p {
+        display: inline-block;
+        margin-right: 1vw;
+        font-size: 1vw; }
+        .overlay .form-wrapper form .form-buttons p .back-to-recipe {
+          color: white; }
+          .overlay .form-wrapper form .form-buttons p .back-to-recipe:hover {
+            cursor: pointer; }

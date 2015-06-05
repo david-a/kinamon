@@ -1,4 +1,5 @@
 menu = $('.menu')
+startingPrice = 160
 
 storeMenuHeaight = ->
   menu.data('height', menu.height()) unless menu.data('height')
@@ -27,6 +28,19 @@ showForm = ->
 hideForm = ->
   $('.overlay').removeClass('enabled')
 
+formErrors = ->
+  if $('#form-phone').val().length < 9
+    $('#form-phone').addClass('error', 600)
+    return true
+
+recipeErrors = ->
+  hasErrors = false
+  $.each menus['recipe'].elements, (type, el) ->
+    unless el.name
+      $("li.line[data-value=#{type}] span").addClass('error', 2000)
+      hasErrors = true
+  hasErrors
+
 clickedOnAppBody = (element) ->
   $(element).is('body') || $(element).parents('.cake-wrapper').length
 
@@ -50,9 +64,25 @@ refreshSelected = (type, value) ->
 updateRecipe = (type, value) ->
   menus['recipe'].elements[type].klass = 'selected'
   menus['recipe'].elements[type].name = menus[type].elements[value].name
+  menus['recipe'].elements[type].price = menus[type].elements[value].price
 
 updateCake = (type, value) ->
   $("#cake ##{type}").html(menus[type].elements[value].svg)
+
+calculatePrice = ->
+  extraPrice = $.map menus['recipe'].elements, (el) -> el.price
+    .reduce (previousValue, currentValue, index, array) ->
+      previousValue + currentValue
+    ,
+      0
+  startingPrice + extraPrice
+
+recipeSummary = ->
+  $.map menus['recipe'].elements, (el) -> "#{el.prefix}: #{el.name || 'ללא'}"
+    .reduce (previousValue, currentValue, index, array) ->
+      previousValue + ' | '+ currentValue
+    ,
+      ''
 
 menu.on 'click', 'li', (event) ->
   menu.trigger 'item:click', [$(@).closest('.menu-wrapper').data('type'), $(@).data('value')]
@@ -70,11 +100,30 @@ menu.on 'item:click', (event, type, value) ->
 
 menu.on 'menu:submit', (event, type) ->
   if type == 'recipe'
+    return false if recipeErrors()
+    price = calculatePrice()
+    $('.form-show-total').html(price)
+    $('#form-total').attr('value', price)
+    $('#form-recipe').attr('value', recipeSummary())
     showForm()
   else
     switchMenu('recipe', true)
 
 $('.back-to-recipe').on 'click', -> hideForm()
+
+$('form.submit-cake-form input').on 'focus', ->
+  $('.error').removeClass('error')
+
+$('form.submit-cake-form, .menu').on 'submit', (event) ->
+  return false if formErrors()
+  event.preventDefault()
+  formData = $(@).serialize()
+  $.ajax
+    url: '//formspree.io/david.avikasis@gmail.com'
+    method: 'POST'
+    data: formData
+    dataType: 'json'
+  hideForm()
 
 $('body').on 'click', (event) ->
   minimizeMenu() if clickedOnAppBody(event.target)

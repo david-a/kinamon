@@ -92,18 +92,25 @@
             <div class='menu'></div>
             <div class='overlay'>
               <div class='form-wrapper'>
-                <div class='form-title'>
-                  <h2>השאירו לנו פרטים ונחזור אליכם עוד היום!</h2>
+                <div class='form-title-wrapper'>
+                  <h2 class='form-title'>השאירו לנו פרטים ונחזור אליכם עוד היום!</h2>
+                  <h3 class='form-total-line'>סה״כ: <span class='form-show-total'></span> ש״ח (ללא משלוח)</h3>
                 </div>
-                <form>
-                  <input id='username' type='text' name='username' placeholder="שם"><br>
-                  <input id='phone' type='text' name='tel' placeholder="טלפון"><br>
-                  <input id='due-date' type='text' name='due-date' placeholder="למתי?"><br>
-                  <input id='notes' type='text' name='notes' placeholder="הערות"><br>
-                  <input id='form-submit' type='submit' value='שלח עוגתך'>
-                  <p>
-                    או <span class='back-to-recipe'>חזור למתכון</span>
-                  </p>
+                <form class='submit-cake-form' action='#'>
+                  <input id='form-username' type='text' name='name' placeholder="שם"><br>
+                  <input id='form-phone' type='text' name='tel' placeholder="טלפון"><br>
+                  <input id='form-notes' type='text' name='notes' placeholder="הערות (רגישויות, למתי העוגה וכו׳)"><br>
+                  <input type="hidden" id='form-total' name="total"/>
+                  <input type="hidden" id='form-recipe' name="recipe"/>
+                  <input type="hidden" name="_next" value="#" />
+
+                  <input type="hidden" name="_subject" value="הזמנה חדשה" />
+                  <div class='form-buttons'>
+                    <input id='form-submit' type='submit' value='שלח עוגתך'>
+                    <p>
+                      או <span class='back-to-recipe'>חזור למתכון</span>
+                    </p>
+                  </div>
                 </form>
               </div>
             </div>

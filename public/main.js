@@ -1,7 +1,9 @@
 (function() {
-  var clickedOnAppBody, hideForm, hideMenu, menu, minimizeMenu, refreshSelected, restoreMenu, showForm, storeMenuHeaight, switchMenu, updateCake, updateRecipe;
+  var calculatePrice, clickedOnAppBody, formErrors, hideForm, hideMenu, menu, minimizeMenu, recipeErrors, recipeSummary, refreshSelected, restoreMenu, showForm, startingPrice, storeMenuHeaight, switchMenu, updateCake, updateRecipe;
 
   menu = $('.menu');
+
+  startingPrice = 160;
 
   storeMenuHeaight = function() {
     if (!menu.data('height')) {
@@ -41,6 +43,25 @@
     return $('.overlay').removeClass('enabled');
   };
 
+  formErrors = function() {
+    if ($('#form-phone').val().length < 9) {
+      $('#form-phone').addClass('error', 600);
+      return true;
+    }
+  };
+
+  recipeErrors = function() {
+    var hasErrors;
+    hasErrors = false;
+    $.each(menus['recipe'].elements, function(type, el) {
+      if (!el.name) {
+        $("li.line[data-value=" + type + "] span").addClass('error', 2000);
+        return hasErrors = true;
+      }
+    });
+    return hasErrors;
+  };
+
   clickedOnAppBody = function(element) {
     return $(element).is('body') || $(element).parents('.cake-wrapper').length;
   };
@@ -77,11 +98,30 @@
 
   updateRecipe = function(type, value) {
     menus['recipe'].elements[type].klass = 'selected';
-    return menus['recipe'].elements[type].name = menus[type].elements[value].name;
+    menus['recipe'].elements[type].name = menus[type].elements[value].name;
+    return menus['recipe'].elements[type].price = menus[type].elements[value].price;
   };
 
   updateCake = function(type, value) {
     return $("#cake #" + type).html(menus[type].elements[value].svg);
+  };
+
+  calculatePrice = function() {
+    var extraPrice;
+    extraPrice = $.map(menus['recipe'].elements, function(el) {
+      return el.price;
+    }).reduce(function(previousValue, currentValue, index, array) {
+      return previousValue + currentValue;
+    }, 0);
+    return startingPrice + extraPrice;
+  };
+
+  recipeSummary = function() {
+    return $.map(menus['recipe'].elements, function(el) {
+      return "" + el.prefix + ": " + (el.name || 'ללא');
+    }).reduce(function(previousValue, currentValue, index, array) {
+      return previousValue + ' | ' + currentValue;
+    }, '');
   };
 
   menu.on('click', 'li', function(event) {
@@ -103,7 +143,15 @@
   });
 
   menu.on('menu:submit', function(event, type) {
+    var price;
     if (type === 'recipe') {
+      if (recipeErrors()) {
+        return false;
+      }
+      price = calculatePrice();
+      $('.form-show-total').html(price);
+      $('#form-total').attr('value', price);
+      $('#form-recipe').attr('value', recipeSummary());
       return showForm();
     } else {
       return switchMenu('recipe', true);
@@ -111,6 +159,26 @@
   });
 
   $('.back-to-recipe').on('click', function() {
+    return hideForm();
+  });
+
+  $('form.submit-cake-form input').on('focus', function() {
+    return $('.error').removeClass('error');
+  });
+
+  $('form.submit-cake-form, .menu').on('submit', function(event) {
+    var formData;
+    if (formErrors()) {
+      return false;
+    }
+    event.preventDefault();
+    formData = $(this).serialize();
+    $.ajax({
+      url: '//formspree.io/david.avikasis@gmail.com',
+      method: 'POST',
+      data: formData,
+      dataType: 'json'
+    });
     return hideForm();
   });
 
