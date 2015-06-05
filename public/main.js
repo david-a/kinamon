@@ -1,9 +1,11 @@
 (function() {
-  var calculatePrice, clickedOnAppBody, formErrors, hideForm, hideMenu, menu, minimizeMenu, recipeErrors, recipeSummary, refreshSelected, restoreMenu, showForm, startingPrice, storeMenuHeaight, switchMenu, updateCake, updateRecipe;
+  var calculatePrice, clickedOnAppBody, formErrors, hideOverlay, menu, minimizeMenu, orderingEmail, placeCake, recipeErrors, recipeSummary, refreshSelected, restoreMenu, showApproval, showForm, showOverlayAndForm, startingPrice, storeMenuHeaight, switchMenu, updateCake, updateRecipe;
 
   menu = $('.menu');
 
   startingPrice = 160;
+
+  orderingEmail = 'david.avikasis@gmail.com';
 
   storeMenuHeaight = function() {
     if (!menu.data('height')) {
@@ -11,19 +13,12 @@
     }
   };
 
-  hideMenu = function() {
-    storeMenuHeaight();
-    return menu.animate({
-      height: 0,
-      opacity: 0
-    });
-  };
-
   minimizeMenu = function() {
     storeMenuHeaight();
-    return menu.animate({
+    menu.animate({
       height: $('.menu-title-wrapper').height()
     });
+    return $('.menu-wrapper .submit').fadeOut(200);
   };
 
   restoreMenu = function() {
@@ -31,16 +26,36 @@
       height: menu.data('height'),
       opacity: 1
     }, {
-      complete: menu.removeData('height')
+      complete: function() {
+        menu.removeData('height');
+        return $('.menu-wrapper .submit').fadeIn(200);
+      }
+    });
+  };
+
+  showOverlayAndForm = function() {
+    showForm();
+    return $('.overlay').show(function() {
+      return $(this).addClass('enabled', 500);
+    });
+  };
+
+  hideOverlay = function() {
+    return $('.overlay').fadeOut(400, function() {
+      return $(this).removeClass('enabled');
+    });
+  };
+
+  showApproval = function() {
+    return $('.form-wrapper').fadeOut(function() {
+      return $('.order-approval').fadeIn(500).delay(3000).fadeOut(100, function() {
+        return hideOverlay();
+      });
     });
   };
 
   showForm = function() {
-    return $('.overlay').addClass('enabled');
-  };
-
-  hideForm = function() {
-    return $('.overlay').removeClass('enabled');
+    return $('.form-wrapper').fadeIn();
   };
 
   formErrors = function() {
@@ -124,6 +139,12 @@
     }, '');
   };
 
+  placeCake = function() {
+    var bgHeight;
+    bgHeight = $(window).height() - $('.header-wrapper').height();
+    return $('.cake-wrapper').css('padding', "" + (0.05 * bgHeight) + "px 0").css('height', 0.9 * bgHeight);
+  };
+
   menu.on('click', 'li', function(event) {
     return menu.trigger('item:click', [$(this).closest('.menu-wrapper').data('type'), $(this).data('value')]);
   });
@@ -152,14 +173,14 @@
       $('.form-show-total').html(price);
       $('#form-total').attr('value', price);
       $('#form-recipe').attr('value', recipeSummary());
-      return showForm();
+      return showOverlayAndForm();
     } else {
       return switchMenu('recipe', true);
     }
   });
 
   $('.back-to-recipe').on('click', function() {
-    return hideForm();
+    return hideOverlay();
   });
 
   $('form.submit-cake-form input').on('focus', function() {
@@ -173,13 +194,15 @@
     }
     event.preventDefault();
     formData = $(this).serialize();
-    $.ajax({
-      url: '//formspree.io/david.avikasis@gmail.com',
+    return $.ajax({
+      url: '//formspree.io/' + orderingEmail,
       method: 'POST',
       data: formData,
-      dataType: 'json'
+      dataType: 'json',
+      complete: function() {
+        return showApproval();
+      }
     });
-    return hideForm();
   });
 
   $('body').on('click', function(event) {
@@ -191,6 +214,12 @@
   $('body').on('click', '.menu-title-wrapper', function() {
     return restoreMenu();
   });
+
+  $(window).on('resize', function() {
+    return placeCake();
+  });
+
+  placeCake();
 
   switchMenu('recipe');
 

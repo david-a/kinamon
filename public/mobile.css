@@ -62,3 +62,8 @@ body {
         .menu .list-wrapper ul li span {
           margin-right: 5.3vw;
           margin-left: 2.6vw; }
+
+.overlay .form-wrapper {
+  width: 70%; }
+  .overlay .form-wrapper form input, .overlay .form-wrapper form .form-buttons p {
+    font-size: 3vw; }

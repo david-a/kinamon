@@ -23,7 +23,8 @@
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
             <![endif]-->
-            <div class='header'>
+            <div class='header-wrapper'>
+              <div class='header'>
               <div class='title-wrapper'>
                 <div class='by-line'>
                   <img src='public/images/by_logo.png'>
@@ -35,16 +36,17 @@
                   <img src='public/images/slogan.png'>
                 </div>
                 <div class='clearfix'></div>
+                </div>
+              </div>
+
+              <div class='manjet'>
+                <div class='manjet-dotted-stripe'></div>
+                <div class='manjet-frills'></div>
               </div>
             </div>
 
-            <div class='manjet'>
-              <div class='manjet-dotted-stripe'></div>
-              <div class='manjet-frills'></div>
-            </div>
-
             <div class='cake-wrapper'>
-              <svg width="100%" viewBox="0 0 1044 690" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+              <svg height="100%" width="100%" viewBox="0 0 1044 690" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
                 <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
                 <title>PieceOfCake</title>
                 <desc>Build A Cake, by Or & Kinamon.</desc>
@@ -91,20 +93,22 @@
             </div>
             <div class='menu'></div>
             <div class='overlay'>
+              <div class='order-approval'>
+                <h1>הזמנתך התקבלה! תודה ויום נפלא!</h1>
+              </div>
               <div class='form-wrapper'>
+
                 <div class='form-title-wrapper'>
                   <h2 class='form-title'>השאירו לנו פרטים ונחזור אליכם עוד היום!</h2>
                   <h3 class='form-total-line'>סה״כ: <span class='form-show-total'></span> ש״ח (ללא משלוח)</h3>
                 </div>
                 <form class='submit-cake-form' action='#'>
                   <input id='form-username' type='text' name='name' placeholder="שם"><br>
-                  <input id='form-phone' type='text' name='tel' placeholder="טלפון"><br>
+                  <input id='form-phone' type='tel' name='tel' placeholder="טלפון"><br>
                   <input id='form-notes' type='text' name='notes' placeholder="הערות (רגישויות, למתי העוגה וכו׳)"><br>
                   <input type="hidden" id='form-total' name="total"/>
                   <input type="hidden" id='form-recipe' name="recipe"/>
-                  <input type="hidden" name="_next" value="#" />
-
-                  <input type="hidden" name="_subject" value="הזמנה חדשה" />
+                  <input type="hidden" name="_subject" value="הזמנה חדשה לאור וקינמון" />
                   <div class='form-buttons'>
                     <input id='form-submit' type='submit' value='שלח עוגתך'>
                     <p>

@@ -1,32 +1,42 @@
 menu = $('.menu')
 startingPrice = 160
+orderingEmail = 'david.avikasis@gmail.com'
 
 storeMenuHeaight = ->
   menu.data('height', menu.height()) unless menu.data('height')
-
-hideMenu = ->
-  storeMenuHeaight()
-  menu.animate
-    height: 0
-    opacity: 0
 
 minimizeMenu = ->
   storeMenuHeaight()
   menu.animate
     height: $('.menu-title-wrapper').height()
+  $('.menu-wrapper .submit').fadeOut(200)
 
 restoreMenu = ->
   menu.animate
     height: menu.data('height')
     opacity: 1
   ,
-    complete: menu.removeData('height')
+    complete: ->
+      menu.removeData('height')
+      $('.menu-wrapper .submit').fadeIn(200)
+
+
+showOverlayAndForm = ->
+  showForm()
+  $('.overlay').show ->
+    $(@).addClass('enabled', 500)
+
+hideOverlay = ->
+  $('.overlay').fadeOut 400, ->
+    $(@).removeClass('enabled')
+
+showApproval = ->
+  $('.form-wrapper').fadeOut ->
+    $('.order-approval').fadeIn(500).delay(3000).fadeOut 100, ->
+      hideOverlay()
 
 showForm = ->
-  $('.overlay').addClass('enabled')
-
-hideForm = ->
-  $('.overlay').removeClass('enabled')
+  $('.form-wrapper').fadeIn()
 
 formErrors = ->
   if $('#form-phone').val().length < 9
@@ -84,6 +94,10 @@ recipeSummary = ->
     ,
       ''
 
+placeCake = ->
+  bgHeight = $(window).height() - $('.header-wrapper').height()
+  $('.cake-wrapper').css('padding', "#{0.05 * bgHeight}px 0").css('height', 0.9 * bgHeight)
+
 menu.on 'click', 'li', (event) ->
   menu.trigger 'item:click', [$(@).closest('.menu-wrapper').data('type'), $(@).data('value')]
 
@@ -105,11 +119,11 @@ menu.on 'menu:submit', (event, type) ->
     $('.form-show-total').html(price)
     $('#form-total').attr('value', price)
     $('#form-recipe').attr('value', recipeSummary())
-    showForm()
+    showOverlayAndForm()
   else
     switchMenu('recipe', true)
 
-$('.back-to-recipe').on 'click', -> hideForm()
+$('.back-to-recipe').on 'click', -> hideOverlay()
 
 $('form.submit-cake-form input').on 'focus', ->
   $('.error').removeClass('error')
@@ -119,15 +133,18 @@ $('form.submit-cake-form, .menu').on 'submit', (event) ->
   event.preventDefault()
   formData = $(@).serialize()
   $.ajax
-    url: '//formspree.io/david.avikasis@gmail.com'
+    url: '//formspree.io/' + orderingEmail
     method: 'POST'
     data: formData
     dataType: 'json'
-  hideForm()
+    complete: -> showApproval()
 
 $('body').on 'click', (event) ->
   minimizeMenu() if clickedOnAppBody(event.target)
 
 $('body').on 'click', '.menu-title-wrapper', -> restoreMenu()
 
+$(window).on 'resize', -> placeCake()
+
+placeCake()
 switchMenu('recipe')
