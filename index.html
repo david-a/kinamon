@@ -11,7 +11,7 @@
   <!-- Place favicon.ico in the root directory -->
 
   <link rel="stylesheet" href="public/normalize.css">
-  <link rel="stylesheet" href="public/fonts.css">
+  <link rel="stylesheet" href="public/fonts/fonts.css">
   <link rel="stylesheet" href="public/main.css">
   <link rel="stylesheet" href="public/screen.css">
   <link rel="stylesheet" media="(orientation: portrait), (max-width: 500px)" href="public/mobile.css">
@@ -34,18 +34,9 @@
             <![endif]-->
             <div class='header-wrapper'>
               <div class='header'>
-              <div class='title-wrapper'>
-                <div class='by-line'>
-                  <img src='public/images/by_logo.png'>
-                </div>
-                <div class='title'>
-                  <img src='public/images/cakeit.png'>
-                </div>
-                <div class='slogan'>
-                  <img src='public/images/slogan.png'>
-                </div>
+                <h1 class='title'>עוּגָה בְּהַרְכָּבָה</h1>
+                <h2 class='subtitle'>אתם מרכיבים, אנחנו אופים!</h2>
                 <div class='clearfix'></div>
-                </div>
               </div>
 
               <div class='manjet'>
@@ -63,6 +54,7 @@
                   <filter id='n' x='0' y='0'>
                     <feTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='10' stitchTiles='stitch'/>
                   </filter>
+                  <path id="path-1" d="M730.831874,139.22602 L0.207837347,47.2700117 L0.207837347,0.875949895 L730.831874,92.8319579 L730.831874,139.22602 Z"></path>
                 </defs>
                 <g id="cake-sketch" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
                   <g id="piece-of-cake" sketch:type="MSLayerGroup">
@@ -100,7 +92,13 @@
                 </g>
               </svg>
             </div>
+
             <div class='menu'></div>
+
+            <div class='by-line'>
+              <img src='public/images/by_logo.png'>
+            </div>
+
             <div class='overlay'>
               <div class='order-approval'>
                 <h1>הזמנתך התקבלה! תודה ויום נפלא!</h1>
@@ -108,7 +106,7 @@
               <div class='form-wrapper'>
 
                 <div class='form-title-wrapper'>
-                  <h2 class='form-title'>השאירו לנו פרטים ונחזור אליכם עוד היום!</h2>
+                  <h2 class='form-title'>שלחו אלינו את המתכון ואנחנו נכין את העוגה עבורכם!</h2>
                   <h3 class='form-total-line'>סה״כ: <span class='form-show-total'></span> ש״ח (ללא משלוח)</h3>
                 </div>
                 <form class='submit-cake-form' action='#'>
@@ -119,7 +117,7 @@
                   <input type="hidden" id='form-recipe' name="recipe"/>
                   <input type="hidden" name="_subject" value="הזמנה חדשה לאור וקינמון" />
                   <div class='form-buttons'>
-                    <input id='form-submit' type='submit' value='שלח עוגתך'>
+                    <input id='form-submit' type='submit' value='הזמן'>
                     <p>
                       או <span class='back-to-recipe'>חזור למתכון</span>
                     </p>

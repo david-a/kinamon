@@ -166,9 +166,6 @@
   menu.on('menu:submit', function(event, type) {
     var price;
     if (type === 'recipe') {
-      if (recipeErrors()) {
-        return false;
-      }
       price = calculatePrice();
       $('.form-show-total').html(price);
       $('#form-total').attr('value', price);
@@ -188,21 +185,8 @@
   });
 
   $('form.submit-cake-form, .menu').on('submit', function(event) {
-    var formData;
-    if (formErrors()) {
-      return false;
-    }
     event.preventDefault();
-    formData = $(this).serialize();
-    return $.ajax({
-      url: '//formspree.io/' + orderingEmail,
-      method: 'POST',
-      data: formData,
-      dataType: 'json',
-      complete: function() {
-        return showApproval();
-      }
-    });
+    return showApproval();
   });
 
   $('body').on('click', function(event) {

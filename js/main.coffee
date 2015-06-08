@@ -114,7 +114,7 @@ menu.on 'item:click', (event, type, value) ->
 
 menu.on 'menu:submit', (event, type) ->
   if type == 'recipe'
-    return false if recipeErrors()
+    # return false if recipeErrors() # debug
     price = calculatePrice()
     $('.form-show-total').html(price)
     $('#form-total').attr('value', price)
@@ -129,15 +129,16 @@ $('form.submit-cake-form input').on 'focus', ->
   $('.error').removeClass('error')
 
 $('form.submit-cake-form, .menu').on 'submit', (event) ->
-  return false if formErrors()
+  # return false if formErrors() # DEBUG
   event.preventDefault()
-  formData = $(@).serialize()
-  $.ajax
-    url: '//formspree.io/' + orderingEmail
-    method: 'POST'
-    data: formData
-    dataType: 'json'
-    complete: -> showApproval()
+  # formData = $(@).serialize()
+  # $.ajax
+  #   url: '//formspree.io/' + orderingEmail
+  #   method: 'POST'
+  #   data: formData
+  #   dataType: 'json'
+  #   complete: -> showApproval()
+  showApproval() # DEBUG
 
 $('body').on 'click', (event) ->
   minimizeMenu() if clickedOnAppBody(event.target)
