@@ -1,5 +1,5 @@
 (function() {
-  var calculatePrice, formErrors, hideOverlay, isMobile, isPortrait, menu, orderingEmail, placeCake, recipeErrors, recipeSummary, refreshSelected, showApproval, showForm, showOverlayAndForm, startingPrice, switchMenu, updateCake, updateRecipe;
+  var calculatePrice, clickedCakePart, formErrors, hideOverlay, isMobile, isPortrait, menu, orderingEmail, placeCake, recipeErrors, recipeSummary, refreshSelected, showApproval, showForm, showOverlayAndForm, startingPrice, switchMenu, updateCake, updateRecipe;
 
   menu = $('.menu');
 
@@ -59,6 +59,10 @@
     return hasErrors;
   };
 
+  clickedCakePart = function(element) {
+    return $(element).parents('.cake-part').attr('id') || 'recipe';
+  };
+
   switchMenu = function(type, animate) {
     var menuHtml, tempDiv;
     if (animate == null) {
@@ -81,12 +85,14 @@
   };
 
   refreshSelected = function(type, value) {
+    var scrollPosition;
     $.each(menus[type].elements, function(i, e) {
       return e.klass = '';
     });
     menus[type].elements[value].klass = 'selected';
+    scrollPosition = $('.menu ul').scrollTop();
     switchMenu(type);
-    return $('.menu ul').scrollTop($('li.selected').position().top - 100);
+    return $('.menu ul').scrollTop(scrollPosition);
   };
 
   updateRecipe = function(type, value) {
@@ -168,6 +174,10 @@
   $('form.submit-cake-form, .menu').on('submit', function(event) {
     event.preventDefault();
     return showApproval();
+  });
+
+  $('.cake-wrapper').on('click', function(event) {
+    return switchMenu(clickedCakePart(event.target));
   });
 
   $(window).on('resize', function() {

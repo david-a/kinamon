@@ -57,8 +57,8 @@ recipeErrors = ->
       hasErrors = true
   hasErrors
 
-# clickedOnAppBody = (element) ->
-#   $(element).is('body') || $(element).parents('.cake-wrapper').length
+clickedCakePart = (element) ->
+  $(element).parents('.cake-part').attr('id') || 'recipe'
 
 switchMenu = (type, animate = false) ->
   menuHtml = templates.menu(menus[type])
@@ -74,8 +74,9 @@ switchMenu = (type, animate = false) ->
 refreshSelected = (type, value) ->
   $.each menus[type].elements, (i, e) -> e.klass = ''
   menus[type].elements[value].klass = 'selected'
+  scrollPosition = $('.menu ul').scrollTop()
   switchMenu(type)
-  $('.menu ul').scrollTop($('li.selected').position().top - 100);
+  $('.menu ul').scrollTop(scrollPosition)
 
 updateRecipe = (type, value) ->
   menus['recipe'].elements[type].klass = 'selected'
@@ -151,6 +152,9 @@ $('form.submit-cake-form, .menu').on 'submit', (event) ->
   # minimizeMenu() if clickedOnAppBody(event.target)
 
 # $('body').on 'click', '.menu-title-wrapper', -> restoreMenu()
+
+$('.cake-wrapper').on 'click', (event) ->
+  switchMenu(clickedCakePart(event.target))
 
 $(window).on 'resize', -> placeCake()
 
