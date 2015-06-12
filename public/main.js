@@ -1,5 +1,5 @@
 (function() {
-  var calculatePrice, clickedOnAppBody, formErrors, hideOverlay, menu, minimizeMenu, orderingEmail, placeCake, recipeErrors, recipeSummary, refreshSelected, restoreMenu, showApproval, showForm, showOverlayAndForm, startingPrice, storeMenuHeaight, switchMenu, updateCake, updateRecipe;
+  var calculatePrice, formErrors, hideOverlay, isMobile, isPortrait, menu, orderingEmail, placeCake, recipeErrors, recipeSummary, refreshSelected, showApproval, showForm, showOverlayAndForm, startingPrice, switchMenu, updateCake, updateRecipe;
 
   menu = $('.menu');
 
@@ -7,30 +7,12 @@
 
   orderingEmail = 'david.avikasis@gmail.com';
 
-  storeMenuHeaight = function() {
-    if (!menu.data('height')) {
-      return menu.data('height', menu.height());
-    }
+  isPortrait = function() {
+    return $(window).height() > $(window).width();
   };
 
-  minimizeMenu = function() {
-    storeMenuHeaight();
-    menu.animate({
-      height: $('.menu-title-wrapper').height()
-    });
-    return $('.menu-wrapper .submit').fadeOut(200);
-  };
-
-  restoreMenu = function() {
-    return menu.animate({
-      height: menu.data('height'),
-      opacity: 1
-    }, {
-      complete: function() {
-        menu.removeData('height');
-        return $('.menu-wrapper .submit').fadeIn(200);
-      }
-    });
+  isMobile = function() {
+    return isPortrait() || $(window).width() <= 500;
   };
 
   showOverlayAndForm = function() {
@@ -75,10 +57,6 @@
       }
     });
     return hasErrors;
-  };
-
-  clickedOnAppBody = function(element) {
-    return $(element).is('body') || $(element).parents('.cake-wrapper').length;
   };
 
   switchMenu = function(type, animate) {
@@ -142,7 +120,10 @@
   placeCake = function() {
     var bgHeight;
     bgHeight = $(window).height() - $('.header-wrapper').height();
-    return $('.cake-wrapper').css('padding', "" + (0.05 * bgHeight) + "px 0").css('height', 0.9 * bgHeight);
+    if (isMobile()) {
+      bgHeight -= menu.height();
+    }
+    return $('.cake-wrapper').css('padding', "" + (0.05 * bgHeight) + "px 2vw").css('height', 0.9 * bgHeight);
   };
 
   menu.on('click', 'li', function(event) {
@@ -189,22 +170,12 @@
     return showApproval();
   });
 
-  $('body').on('click', function(event) {
-    if (clickedOnAppBody(event.target)) {
-      return minimizeMenu();
-    }
-  });
-
-  $('body').on('click', '.menu-title-wrapper', function() {
-    return restoreMenu();
-  });
-
   $(window).on('resize', function() {
     return placeCake();
   });
 
-  placeCake();
-
   switchMenu('recipe');
+
+  placeCake();
 
 }).call(this);

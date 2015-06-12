@@ -3,31 +3,11 @@ body {
   background-position: 0 0, 30px 30px; }
 
 .header {
-  background-image: -webkit-repeating-linear-gradient(0deg, transparent, transparent 6vw, rgba(82, 56, 40, 0.5) 6vw, rgba(82, 56, 40, 0.5) 12vw);
-  background-image: repeating-linear-gradient(90deg, transparent, transparent 6vw, rgba(82, 56, 40, 0.5) 6vw, rgba(82, 56, 40, 0.5) 12vw);
-  height: 38vw; }
-  .header .title-wrapper {
-    padding-top: 4vw; }
-    .header .title-wrapper .by-line {
-      float: none;
-      margin: -5vw 0 0; }
-      .header .title-wrapper .by-line img {
-        width: 42vw;
-        position: relative;
-        z-index: 1; }
-    .header .title-wrapper .title {
-      float: none;
-      margin: -5vw 0 0; }
-      .header .title-wrapper .title img {
-        width: 40vw; }
-    .header .title-wrapper .slogan {
-      float: none;
-      margin: -5vw 0 0; }
-      .header .title-wrapper .slogan img {
-        width: 61vw; }
-    .header .title-wrapper img {
-      margin: 0 auto;
-      display: block; }
+  font-size: 4vw; }
+  .header h1.title {
+    margin: 1vw 1.5vw 0 1.5vw; }
+  .header h2.subtitle {
+    margin: -2vw 1.5vw 0 0; }
 
 .manjet .manjet-dotted-stripe {
   height: 8vw;
@@ -45,18 +25,26 @@ body {
   -webkit-filter: drop-shadow(0 0 0.5vw #aaa);
           filter: drop-shadow(0 0 0.5vw #aaa); }
 
+.cake-wrapper {
+  margin: 0 auto; }
+
 .menu {
-  min-width: 60vw;
-  font-size: 4vw; }
+  width: 100%;
+  font-size: 7vw;
+  bottom: 0;
+  padding-bottom: 0;
+  -webkit-transform: rotate(0);
+      -ms-transform: rotate(0);
+          transform: rotate(0); }
   .menu .submit {
     margin: 2vw; }
   .menu .list-wrapper {
-    margin: 0 7.1vw 0 0; }
+    margin: 0 14vw 0 0; }
     .menu .list-wrapper ul {
-      max-height: 31vh;
-      margin: 0 -7.1vw 0 0; }
+      max-height: 30vh;
+      margin: 0 -14vw 0 0; }
       .menu .list-wrapper ul li {
-        padding: 2vw 1vw 2vw 2vw; }
+        padding: 0.5vw 7vw 0 2vw; }
         .menu .list-wrapper ul li img {
           width: 3.3vw; }
         .menu .list-wrapper ul li span {
@@ -66,4 +54,4 @@ body {
 .overlay .form-wrapper {
   width: 70%; }
   .overlay .form-wrapper form input, .overlay .form-wrapper form .form-buttons p {
-    font-size: 3vw; }
+    font-size: 5vw; }

@@ -25,10 +25,10 @@ body
   background-color: $color_deep_oak
   background-image: repeating-linear-gradient(90deg, transparent, transparent 2.4vw, $color_saddle_50 2.4vw, $color_saddle_50 4.8vw)
   min-height: 6vw
-  color: white
   font-size: 2vw
   h1, h2
     float: right
+    color: $color_albescent_white
   h1.title
     font-family: 'nootregular'
     // font-size: 4em
@@ -53,7 +53,7 @@ body
     -webkit-filter: drop-shadow(0px 0 2px $color_silver_chalice)
 
 .cake-wrapper
-  margin: 0 auto
+  margin-right: 18vw
   height: 0
 
 .menu
@@ -104,6 +104,7 @@ body
         color: $color_copper
         white-space: nowrap
         transition: background-color 200ms ease-in-out
+        padding-right: 1vw
 
         span
           color: $color_rose_fog
@@ -146,7 +147,6 @@ body
   img
     width: 20vw
   &:hover
-    cursor: pointer
     opacity: 1
     transition: opacity 200ms
 

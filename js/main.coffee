@@ -2,23 +2,29 @@ menu = $('.menu')
 startingPrice = 160
 orderingEmail = 'david.avikasis@gmail.com'
 
-storeMenuHeaight = ->
-  menu.data('height', menu.height()) unless menu.data('height')
+isPortrait = ->
+  $(window).height() > $(window).width()
 
-minimizeMenu = ->
-  storeMenuHeaight()
-  menu.animate
-    height: $('.menu-title-wrapper').height()
-  $('.menu-wrapper .submit').fadeOut(200)
+isMobile = ->
+  isPortrait() || $(window).width() <= 500
 
-restoreMenu = ->
-  menu.animate
-    height: menu.data('height')
-    opacity: 1
-  ,
-    complete: ->
-      menu.removeData('height')
-      $('.menu-wrapper .submit').fadeIn(200)
+# storeMenuHeaight = ->
+#   menu.data('height', menu.height()) unless menu.data('height')
+
+# minimizeMenu = ->
+#   storeMenuHeaight()
+#   menu.animate
+#     height: $('.menu-title-wrapper').height()
+#   $('.menu-wrapper .submit').fadeOut(200)
+
+# restoreMenu = ->
+#   menu.animate
+#     height: menu.data('height')
+#     opacity: 1
+#   ,
+#     complete: ->
+#       menu.removeData('height')
+#       $('.menu-wrapper .submit').fadeIn(200)
 
 
 showOverlayAndForm = ->
@@ -51,8 +57,8 @@ recipeErrors = ->
       hasErrors = true
   hasErrors
 
-clickedOnAppBody = (element) ->
-  $(element).is('body') || $(element).parents('.cake-wrapper').length
+# clickedOnAppBody = (element) ->
+#   $(element).is('body') || $(element).parents('.cake-wrapper').length
 
 switchMenu = (type, animate = false) ->
   menuHtml = templates.menu(menus[type])
@@ -96,7 +102,8 @@ recipeSummary = ->
 
 placeCake = ->
   bgHeight = $(window).height() - $('.header-wrapper').height()
-  $('.cake-wrapper').css('padding', "#{0.05 * bgHeight}px 0").css('height', 0.9 * bgHeight)
+  bgHeight -= menu.height() if isMobile()
+  $('.cake-wrapper').css('padding', "#{0.05 * bgHeight}px 2vw").css('height', 0.9 * bgHeight)
 
 menu.on 'click', 'li', (event) ->
   menu.trigger 'item:click', [$(@).closest('.menu-wrapper').data('type'), $(@).data('value')]
@@ -140,12 +147,12 @@ $('form.submit-cake-form, .menu').on 'submit', (event) ->
   #   complete: -> showApproval()
   showApproval() # DEBUG
 
-$('body').on 'click', (event) ->
-  minimizeMenu() if clickedOnAppBody(event.target)
+# $('body').on 'click', (event) ->
+  # minimizeMenu() if clickedOnAppBody(event.target)
 
-$('body').on 'click', '.menu-title-wrapper', -> restoreMenu()
+# $('body').on 'click', '.menu-title-wrapper', -> restoreMenu()
 
 $(window).on 'resize', -> placeCake()
 
-placeCake()
 switchMenu('recipe')
+placeCake()

@@ -4,37 +4,17 @@ body
   background-size: 60px 60px
   background-position: 0 0, 30px 30px
 
+  // .header
+  //   background-image: repeating-linear-gradient(90deg, transparent, transparent 6vw, $color_saddle_50 6vw, $color_saddle_50 12vw)
+  //   // height: 38vw
+  //   .title-wrapper
+  //     padding-top: 4vw
 .header
-  background-image: repeating-linear-gradient(90deg, transparent, transparent 6vw, $color_saddle_50 6vw, $color_saddle_50 12vw)
-  height: 38vw
-  .title-wrapper
-    padding-top: 4vw
-    .by-line
-      float: none
-      margin: -5vw 0 0
-      img
-        width: 42vw
-        position: relative
-        z-index: 1
-
-
-    .title
-      float: none
-      margin: -5vw 0 0
-      img
-        width: 40vw
-
-
-    .slogan
-      float: none
-      margin: -5vw 0 0
-      img
-        width: 61vw
-
-
-    img
-      margin: 0 auto
-      display: block
+  font-size: 4vw
+  h1.title
+    margin: 1vw 1.5vw 0 1.5vw
+  h2.subtitle
+    margin: -2vw 1.5vw 0 0
 
 .manjet
   .manjet-dotted-stripe
@@ -51,22 +31,28 @@ body
     background-position: 0 -9.7vw, 0 0
     filter: drop-shadow(0 0 0.5vw $color_silver_chalice)
 
+.cake-wrapper
+  margin: 0 auto
+
 .menu
-  min-width: 60vw
-  font-size: 4vw
+  width: 100%
+  font-size: 7vw
+  bottom: 0
+  padding-bottom: 0
+  transform: rotate(0)
 
   .submit
     margin: 2vw
 
   .list-wrapper
-    margin: 0 7.1vw 0 0
+    margin: 0 14vw 0 0
 
     ul
-      max-height: 31vh
-      margin: 0 -7.1vw 0 0
+      max-height: 30vh
+      margin: 0 -14vw 0 0
 
       li
-        padding: 2vw 1vw 2vw 2vw
+        padding: 0.5vw 7vw 0 2vw
 
         img
           width: 3.3vw
@@ -81,4 +67,4 @@ body
 
     form
       input, .form-buttons p
-        font-size: 3vw
+        font-size: 5vw
