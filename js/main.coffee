@@ -1,31 +1,12 @@
 menu = $('.menu')
 startingPrice = 160
-orderingEmail = 'david.avikasis@gmail.com'
+orderingEmail = 'or.kinamon@gmail.com'
 
 isPortrait = ->
   $(window).height() > $(window).width()
 
 isMobile = ->
   isPortrait() || $(window).width() <= 500
-
-# storeMenuHeaight = ->
-#   menu.data('height', menu.height()) unless menu.data('height')
-
-# minimizeMenu = ->
-#   storeMenuHeaight()
-#   menu.animate
-#     height: $('.menu-title-wrapper').height()
-#   $('.menu-wrapper .submit').fadeOut(200)
-
-# restoreMenu = ->
-#   menu.animate
-#     height: menu.data('height')
-#     opacity: 1
-#   ,
-#     complete: ->
-#       menu.removeData('height')
-#       $('.menu-wrapper .submit').fadeIn(200)
-
 
 showOverlayAndForm = ->
   showForm()
@@ -84,7 +65,9 @@ updateRecipe = (type, value) ->
   menus['recipe'].elements[type].price = menus[type].elements[value].price
 
 updateCake = (type, value) ->
-  $("#cake ##{type}").html(menus[type].elements[value].svg)
+  # $('#cake-defs').append menus[type].elements[value].defs # TODO enable defs on-the-fly
+  $("#cake ##{type} > g").replaceWith(menus[type].elements[value].svg)
+  $(".cake-wrapper").html($(".cake-wrapper").html());
 
 calculatePrice = ->
   extraPrice = $.map menus['recipe'].elements, (el) -> el.price
@@ -106,6 +89,9 @@ placeCake = ->
   bgHeight -= menu.height() if isMobile()
   $('.cake-wrapper').css('padding', "#{0.05 * bgHeight}px 2vw").css('height', 0.9 * bgHeight)
 
+nikudForTitle = ->
+  $('.header h1.title').html('עוּגָה בְּהַרְכָּבָה') if "chrome" of window
+
 menu.on 'click', 'li', (event) ->
   menu.trigger 'item:click', [$(@).closest('.menu-wrapper').data('type'), $(@).data('value')]
 
@@ -122,13 +108,17 @@ menu.on 'item:click', (event, type, value) ->
 
 menu.on 'menu:submit', (event, type) ->
   if type == 'recipe'
-    # return false if recipeErrors() # debug
+    ga('send', 'event', 'cake-recipe', 'submit')
+    if recipeErrors()
+      ga('send', 'event', 'cake-recipe', 'error')
+      return false
     price = calculatePrice()
     $('.form-show-total').html(price)
     $('#form-total').attr('value', price)
     $('#form-recipe').attr('value', recipeSummary())
     showOverlayAndForm()
   else
+    ga('send', 'event', 'cake-recipe', 'chosen-ingredient')
     switchMenu('recipe', true)
 
 $('.back-to-recipe').on 'click', -> hideOverlay()
@@ -137,26 +127,24 @@ $('form.submit-cake-form input').on 'focus', ->
   $('.error').removeClass('error')
 
 $('form.submit-cake-form, .menu').on 'submit', (event) ->
-  # return false if formErrors() # DEBUG
+  ga('send', 'event', 'order-form', 'submit')
+  if formErrors()
+    ga('send', 'event', 'order-form', 'error')
+    return false
   event.preventDefault()
-  # formData = $(@).serialize()
-  # $.ajax
-  #   url: '//formspree.io/' + orderingEmail
-  #   method: 'POST'
-  #   data: formData
-  #   dataType: 'json'
-  #   complete: -> showApproval()
-  showApproval() # DEBUG
-
-# $('body').on 'click', (event) ->
-  # minimizeMenu() if clickedOnAppBody(event.target)
-
-# $('body').on 'click', '.menu-title-wrapper', -> restoreMenu()
+  formData = $(@).serialize()
+  $.ajax
+    url: '//formspree.io/' + orderingEmail
+    method: 'POST'
+    data: formData
+    dataType: 'json'
+    complete: -> showApproval()
 
 $('.cake-wrapper').on 'click', (event) ->
   switchMenu(clickedCakePart(event.target))
 
 $(window).on 'resize', -> placeCake()
 
+nikudForTitle()
 switchMenu('recipe')
 placeCake()

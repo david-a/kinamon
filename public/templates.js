@@ -1,15 +1,1 @@
-(function() {
-  this.templates = {
-    menu: function(data) {
-      var lines;
-      lines = $.map(data.elements, function(element, type) {
-        return ("<li class='line " + (element.klass || '') + "' data-value='" + type + "'>") + "<img src='public/images/check.png'>" + ("<span class='prefix'>" + (element.prefix || '') + "</span>") + ("" + (element.name || '')) + "</li>";
-      });
-      return ("<div class='menu-wrapper' data-type='" + data.type + "'>") + "<div class='menu-title-wrapper'>" + ("<a class='submit'>" + (data.button || 'המשך') + "</a>") + ("<h2 class='heading'>" + data.name + "</h2>") + "</div>" + "<div class='list-wrapper'>" + "<ul>" + lines.join('') + "</ul>" + "</div>" + "</div>";
-    },
-    hiddenDiv: function(content) {
-      return "<div class='menu invisible'>" + content + "</div>";
-    }
-  };
-
-}).call(this);
+(function(){this.templates={menu:function(i){var a;return a=$.map(i.elements,function(i,a){return"<li class='line "+(i.klass||"")+"' data-value='"+a+"'><img src='public/images/check.png'>"+("<span class='prefix'>"+(i.prefix||"")+"</span>")+(""+(i.name||""))+"</li>"}),"<div class='menu-wrapper' data-type='"+i.type+"'><div class='menu-title-wrapper'>"+("<a class='submit'>"+(i.button||"המשך")+"</a>")+("<h2 class='heading'>"+i.name+"</h2>")+"</div><div class='list-wrapper'><ul>"+a.join("")+"</ul></div></div>"},hiddenDiv:function(i){return"<div class='menu invisible'>"+i+"</div>"}}}).call(this);

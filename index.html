@@ -24,8 +24,7 @@
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
     ga('create', 'UA-63834865-1', 'auto');
-    ga('send', 'pageview');
-
+    ga('send', 'pageview', 'homepage', 'enter');
   </script>
 </head>
 <body>
@@ -35,7 +34,7 @@
             <div class='header-wrapper'>
               <div class='header'>
                 <a href='.'>
-                  <h1 class='title'>עוּגָה בְּהַרְכָּבָה</h1>
+                  <h1 class='title'>עוגה בהרכבה</h1>
                 </a>
                 <h2 class='subtitle'>אתם מרכיבים, אנחנו אופים!</h2>
                 <div class='clearfix'></div>
@@ -52,11 +51,16 @@
                 <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
                 <title>PieceOfCake</title>
                 <desc>Build A Cake, by Or & Kinamon.</desc>
-                <defs>
+                <defs id='cake-defs'>
                   <filter id='n' x='0' y='0'>
                     <feTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='10' stitchTiles='stitch'/>
                   </filter>
-                  <path id="path-1" d="M730.831874,139.22602 L0.207837347,47.2700117 L0.207837347,0.875949895 L730.831874,92.8319579 L730.831874,139.22602 Z"></path>
+                  <linearGradient x1="50%" y1="45.0824869%" x2="50%" y2="100%" id="meringue-gradient">
+                    <stop stop-color="#FFFCFA" offset="0%"></stop>
+                    <stop stop-color="#E9D4B9" offset="100%"></stop>
+                  </linearGradient>
+                  <path id="base-mask-rect" d="M730.831874,139.22602 L0.207837347,47.2700117 L0.207837347,0.875949895 L730.831874,92.8319579 L730.831874,139.22602 Z"></path>
+                  <rect id="truffle-mask-rect" x="5.68434189e-14" y="-7.10542736e-15" width="143" height="56"></rect>
                 </defs>
                 <g id="cake-sketch" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
                   <g id="piece-of-cake" sketch:type="MSLayerGroup">
@@ -83,7 +87,7 @@
                           <path d="M0.604155591,225.338499 C0.604155591,225.338499 8.09394837,152.261895 75.6494217,82.5006722 C143.204895,12.7394494 227.952606,0.810783396 227.952606,0.810783396 L745.769463,319.856822 L0.604155591,225.338499 Z" id="top" fill="#C3C3C3"></path>
                         </g>
                       </g>
-                      <g id="extras" class='cake-part'></g>
+                      <g id="extras" class='cake-part'><g id="extras-mock"></g></g>
                     </g>
                     <g id="spoon" transform="translate(552.500000, 564.500000) scale(-1, 1) translate(-552.500000, -564.500000) translate(198.000000, 446.000000)" sketch:type="MSShapeGroup">
                       <path d="M443.538905,93.1164849 C443.538905,93.1164849 462.078165,88.3277614 479.150648,65.4584044 C496.223131,42.5890475 568.153143,7.00209264 655.998749,0.969708529 C743.844354,-5.06267558 699.532282,52.8025081 677.179621,72.3261674 C654.82696,91.8498266 589.268637,137.924421 535.69195,137.92442 C482.115264,137.924419 486.410171,128.034092 437.014838,120.580373 C387.619505,113.126655 15.2890111,236.625319 15.2890111,236.625319 C15.2890111,236.625319 6.98414951,226.593375 0.840204766,211.72313 C43.8973985,211.723136 346.245997,101.917159 443.538905,93.1164849 Z" id="spoon-body" fill="#D8D8D8"></path>
