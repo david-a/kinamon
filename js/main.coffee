@@ -108,9 +108,9 @@ menu.on 'item:click', (event, type, value) ->
 
 menu.on 'menu:submit', (event, type) ->
   if type == 'recipe'
-    ga('send', 'event', 'cake-recipe', 'submit')
+    ga('send', 'event', 'cake-recipe', 'cake-submit')
     if recipeErrors()
-      ga('send', 'event', 'cake-recipe', 'error')
+      ga('send', 'event', 'cake-recipe', 'cake-error')
       return false
     price = calculatePrice()
     $('.form-show-total').html(price)
@@ -127,9 +127,9 @@ $('form.submit-cake-form input').on 'focus', ->
   $('.error').removeClass('error')
 
 $('form.submit-cake-form, .menu').on 'submit', (event) ->
-  ga('send', 'event', 'order-form', 'submit')
+  ga('send', 'event', 'order-form', 'order-submit')
   if formErrors()
-    ga('send', 'event', 'order-form', 'error')
+    ga('send', 'event', 'order-form', 'order-error')
     return false
   event.preventDefault()
   formData = $(@).serialize()
@@ -138,7 +138,9 @@ $('form.submit-cake-form, .menu').on 'submit', (event) ->
     method: 'POST'
     data: formData
     dataType: 'json'
-    complete: -> showApproval()
+    complete: ->
+      ga('send', 'event', 'order-form', 'order-success')
+      showApproval()
 
 $('.cake-wrapper').on 'click', (event) ->
   switchMenu(clickedCakePart(event.target))
