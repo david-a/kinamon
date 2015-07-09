@@ -66,7 +66,7 @@ updateRecipe = (type, value) ->
 
 updateCake = (type, value) ->
   # $('#cake-defs').append menus[type].elements[value].defs # TODO enable defs on-the-fly
-  $("#cake ##{type} > g").replaceWith(menus[type].elements[value].svg)
+  $("#cake ##{type} > g").replaceWith(menus[type].elements[value].svg) # $("#cake ##{type}).html(SOME-SVG) only works on chrome !
   $(".cake-wrapper").html($(".cake-wrapper").html());
 
 calculatePrice = ->
