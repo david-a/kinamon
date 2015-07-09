@@ -1396,7 +1396,7 @@
     elements:
       none:
         name: 'ללא הפתעות'
-        svg: ''
+        svg: '<g></g>'
       coconutBalls:
         name: 'כדורי קוקוס'
         svg: '<g id="extras-coconut-balls" transform="translate(97.000000, 274.000000)">
@@ -1451,7 +1451,7 @@
     elements:
       none:
         name: 'ללא ציפוי'
-        svg: ''
+        svg: '<g></g>'
       milkChocolateGanache:
         name: 'גנש שוקולד חלב'
         svg: '<g id="cover-milk-chocolate-ganache" transform="translate(0.000000, 1.000000)">
