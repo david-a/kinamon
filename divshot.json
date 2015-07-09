@@ -1,0 +1,7 @@
+{
+  "name": "kinamon",
+  "root": "./",
+  "clean_urls": true,
+  "error_page": "404.html",
+  "exclude": ["js/", "css/"]
+}
