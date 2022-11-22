@@ -1,6 +1,6 @@
 menu = $('.menu')
 startingPrice = 160
-orderingEmail = 'or.kinamon@gmail.com'
+formEndpoint = '//formspree.io/f/mgeqqjnd'
 
 isPortrait = ->
   $(window).height() > $(window).width()
@@ -134,7 +134,7 @@ $('form.submit-cake-form, .menu').on 'submit', (event) ->
   event.preventDefault()
   formData = $(@).serialize()
   $.ajax
-    url: '//formspree.io/' + orderingEmail
+    url: formEndpoint
     method: 'POST'
     data: formData
     dataType: 'json'
