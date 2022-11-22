@@ -1,1 +1,180 @@
-@charset "UTF-8";.extend_note_line,.menu .heading,.menu .list-wrapper ul li{list-style:none;border-bottom:1px dotted #ccc;height:auto;padding:.7vw;text-align:right}body{font-family:comix_no2_clm;background-color:#f4e3d7;background-image:-webkit-radial-gradient(#fff 15%,transparent 16%),-webkit-radial-gradient(#fff 15%,transparent 16%);background-image:radial-gradient(#fff 15%,transparent 16%),radial-gradient(#fff 15%,transparent 16%);background-size:4.2vw 4.2vw;background-position:0 0,2vw 2vw;overflow-x:hidden;direction:rtl;word-spacing:.1em}.header{background-color:#3f2210;background-image:-webkit-repeating-linear-gradient(0deg,transparent,transparent 2.4vw,rgba(82,56,40,.5)2.4vw,rgba(82,56,40,.5)4.8vw);background-image:repeating-linear-gradient(90deg,transparent,transparent 2.4vw,rgba(82,56,40,.5)2.4vw,rgba(82,56,40,.5)4.8vw);min-height:6vw;font-size:2vw}.header h1,.header h2{float:right;color:#f4e3d7}.header h1.title{font-family:nootregular;margin:1vw 1.5vw .5vw}.header h2.subtitle{margin:2vw 0 0}.manjet .manjet-dotted-stripe{height:2.4vw;background-color:#006680;background-image:-webkit-radial-gradient(#d5f6ff 35%,transparent 39%);background-image:radial-gradient(#d5f6ff 35%,transparent 39%);background-size:2.2vw 2.2vw;background-position:0 .2vw,2vw 2vw}.manjet .manjet-frills{height:2.6vw;background-image:-webkit-radial-gradient(#d5f6ff 69%,transparent 67%);background-image:radial-gradient(#d5f6ff 69%,transparent 67%);background-size:5.1vw 5.7vw;background-position:0 -3.1vw,0 0;filter:drop-shadow(0px 0 2px #aaa);-webkit-filter:drop-shadow(0px 0 2px #aaa)}.cake-wrapper{margin-right:18vw;height:0}.cake-wrapper svg{overflow:visible}.menu{background-color:#f5f5f5;min-width:32vw;float:right;font-size:3vw;box-shadow:-.1vw -.2vw 2vw rgba(33,33,33,.7);-webkit-transform:rotate(2deg);-ms-transform:rotate(2deg);transform:rotate(2deg);position:fixed;bottom:-.7vw;padding-bottom:.7vw}.menu .heading{color:#3f2210;margin:0}.menu .submit{float:left;margin:1vw;font-size:.8em;background-color:rgba(255,255,0,.6);padding:.2em;-webkit-transition:background-color 200ms ease-in-out;transition:background-color 200ms ease-in-out}.menu .submit:hover{cursor:pointer;background-color:#ff0}.menu .list-wrapper{overflow-x:visible;border-right:4px double #ffaa9f;margin:0 3.1vw 0 0}.menu .list-wrapper ul{font-size:1em;padding:0;margin:0 -3.1vw 0 0;max-height:23vw;overflow-y:scroll}.menu .list-wrapper ul li{color:#b26b3e;white-space:nowrap;-webkit-transition:background-color 200ms ease-in-out;transition:background-color 200ms ease-in-out;padding-right:1vw}.menu .list-wrapper ul li span{color:#e2c6b5;margin-right:1.3vw;margin-left:.6vw}.menu .list-wrapper ul li span:empty{margin-left:0}.menu .list-wrapper ul li span.error{color:red}.menu .list-wrapper ul li img{visibility:hidden;width:1.3vw}.menu .list-wrapper ul li:hover{background-color:rgba(213,246,255,.4);cursor:pointer}.menu:not(.invisible) .list-wrapper ul li.selected img{visibility:visible}.menu.invisible .list-wrapper ul{overflow-y:hidden}.menu .menu-wrapper[data-type=recipe] li:not(.selected) span:before{content:"בחר "}.by-line{margin:0 0 1vw 2vw;position:fixed;left:0;bottom:0;opacity:.9}.by-line img{width:20vw}.by-line:hover{opacity:1;-webkit-transition:opacity 200ms;transition:opacity 200ms}.overlay{display:none;position:fixed;width:100%;height:100%;top:0;left:0;z-index:100;opacity:0;-webkit-transition:opacity 500ms;transition:opacity 500ms;text-align:center;font-size:3vh}.overlay.enabled{background-color:#006680;opacity:.95}.overlay .order-approval{display:none;color:#fff;margin-top:8vh;padding:2vh}.overlay .form-wrapper{margin:auto;width:40%;text-align:right}.overlay .form-wrapper .form-title-wrapper{margin:4vh 0;max-width:100%;color:#fff}.overlay .form-wrapper .form-title-wrapper h2.form-title{margin:0}.overlay .form-wrapper .form-title-wrapper h3.form-total-line{margin:1vh 0}.overlay .form-wrapper .form-title-wrapper h3.form-total-line .form-show-total{font-family:arial}.overlay .form-wrapper form input{width:100%;padding:3vh;margin-bottom:4vh;box-sizing:border-box}.overlay .form-wrapper form input#form-submit{max-width:50%;background-color:#fff;color:#006680;font-weight:700}.overlay .form-wrapper form input.error{border:1px solid red}.overlay .form-wrapper form .form-buttons{white-space:nowrap}.overlay .form-wrapper form .form-buttons p{display:inline-block;margin-right:1vw}.overlay .form-wrapper form .form-buttons p .back-to-recipe{color:#fff}.overlay .form-wrapper form .form-buttons p .back-to-recipe:hover{cursor:pointer}
+@charset "UTF-8";
+.extend_note_line, .menu .heading, .menu .list-wrapper ul li {
+  list-style: none;
+  border-bottom: 1px dotted #ccc;
+  height: auto;
+  padding: 0.7vw;
+  text-align: right; }
+
+body {
+  font-family: "comix_no2_clm";
+  background-color: #f4e3d7;
+  background-image: radial-gradient(white 15%, transparent 16%), radial-gradient(white 15%, transparent 16%);
+  background-size: 4.2vw 4.2vw;
+  background-position: 0 0, 2vw 2vw;
+  overflow-x: hidden;
+  direction: rtl;
+  word-spacing: 0.1em; }
+
+.header {
+  background-color: #3f2210;
+  background-image: repeating-linear-gradient(90deg, transparent, transparent 2.4vw, rgba(82, 56, 40, 0.5) 2.4vw, rgba(82, 56, 40, 0.5) 4.8vw);
+  min-height: 6vw;
+  font-size: 2vw; }
+  .header h1, .header h2 {
+    float: right;
+    color: #f4e3d7; }
+  .header h1.title {
+    font-family: "nootregular";
+    margin: 1vw 1.5vw 0.5vw 1.5vw; }
+  .header h2.subtitle {
+    margin: 2vw 0 0 0; }
+
+.manjet .manjet-dotted-stripe {
+  height: 2.4vw;
+  background-color: #006680;
+  background-image: radial-gradient(#d5f6ff 35%, transparent 39%);
+  background-size: 2.2vw 2.2vw;
+  background-position: 0 0.2vw, 2vw 2vw; }
+.manjet .manjet-frills {
+  height: 2.6vw;
+  background-image: radial-gradient(#d5f6ff 69%, transparent 67%);
+  background-size: 5.1vw 5.7vw;
+  background-position: 0 -3.1vw, 0 0;
+  filter: drop-shadow(0px 0 2px #aaa);
+  -webkit-filter: drop-shadow(0px 0 2px #aaa); }
+
+.cake-wrapper {
+  margin-right: 18vw;
+  height: 0; }
+  .cake-wrapper svg {
+    overflow: visible; }
+
+.menu {
+  background-color: #f5f5f5;
+  min-width: 32vw;
+  float: right;
+  font-size: 3vw;
+  box-shadow: -0.1vw -0.2vw 2vw rgba(33, 33, 33, 0.7);
+  transform: rotate(2deg);
+  position: fixed;
+  bottom: -0.7vw;
+  padding-bottom: 0.7vw; }
+  .menu .heading {
+    color: #3f2210;
+    margin: 0; }
+  .menu .submit {
+    float: left;
+    margin: 1vw;
+    font-size: 0.8em;
+    background-color: rgba(255, 255, 0, 0.6);
+    padding: 0.2em;
+    transition: background-color 200ms ease-in-out; }
+    .menu .submit:hover {
+      cursor: pointer;
+      background-color: yellow; }
+  .menu .list-wrapper {
+    overflow-x: visible;
+    border-right: 4px double #ffaa9f;
+    margin: 0 3.1vw 0 0; }
+    .menu .list-wrapper ul {
+      font-size: 1em;
+      padding: 0;
+      margin: 0 -3.1vw 0 0;
+      max-height: 23vw;
+      overflow-y: scroll; }
+      .menu .list-wrapper ul li {
+        color: #b26b3e;
+        white-space: nowrap;
+        transition: background-color 200ms ease-in-out;
+        padding-right: 1vw; }
+        .menu .list-wrapper ul li span {
+          color: #e2c6b5;
+          margin-right: 1.3vw;
+          margin-left: 0.6vw; }
+          .menu .list-wrapper ul li span:empty {
+            margin-left: 0; }
+          .menu .list-wrapper ul li span.error {
+            color: red; }
+        .menu .list-wrapper ul li img {
+          visibility: hidden;
+          width: 1.3vw; }
+        .menu .list-wrapper ul li:hover {
+          background-color: rgba(213, 246, 255, 0.4);
+          cursor: pointer; }
+  .menu:not(.invisible) .list-wrapper ul li.selected img {
+    visibility: visible; }
+  .menu.invisible .list-wrapper ul {
+    overflow-y: hidden; }
+  .menu .menu-wrapper[data-type=recipe] li:not(.selected) span:before {
+    content: "בחר "; }
+
+.by-line {
+  margin: 0 0 1vw 2vw;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  opacity: 0.9; }
+  .by-line img {
+    width: 20vw; }
+  .by-line:hover {
+    opacity: 1;
+    transition: opacity 200ms; }
+
+.overlay {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 500ms;
+  text-align: center;
+  font-size: 3vh; }
+  .overlay.enabled {
+    background-color: #006680;
+    opacity: 0.95; }
+  .overlay .order-approval {
+    display: none;
+    color: white;
+    margin-top: 8vh;
+    padding: 2vh; }
+  .overlay .form-wrapper {
+    margin: auto;
+    width: 40%;
+    text-align: right; }
+    .overlay .form-wrapper .form-title-wrapper {
+      margin: 4vh 0;
+      max-width: 100%;
+      color: white; }
+      .overlay .form-wrapper .form-title-wrapper h2.form-title {
+        margin: 0; }
+      .overlay .form-wrapper .form-title-wrapper h3.form-total-line {
+        margin: 1vh 0; }
+        .overlay .form-wrapper .form-title-wrapper h3.form-total-line .form-show-total {
+          font-family: arial; }
+    .overlay .form-wrapper form input {
+      width: 100%;
+      padding: 3vh;
+      margin-bottom: 4vh;
+      box-sizing: border-box; }
+      .overlay .form-wrapper form input#form-submit {
+        max-width: 50%;
+        background-color: white;
+        color: #006680;
+        font-weight: bold; }
+      .overlay .form-wrapper form input.error {
+        border: 1px solid red; }
+    .overlay .form-wrapper form .form-buttons {
+      white-space: nowrap; }
+      .overlay .form-wrapper form .form-buttons p {
+        display: inline-block;
+        margin-right: 1vw; }
+        .overlay .form-wrapper form .form-buttons p .back-to-recipe {
+          color: white; }
+          .overlay .form-wrapper form .form-buttons p .back-to-recipe:hover {
+            cursor: pointer; }
+
+/*# sourceMappingURL=screen.css.map */
